@@ -1,0 +1,1 @@
+export default function TeamBadge({team,large=false}){return <span className={`inline-flex shrink-0 items-center justify-center rounded-xl font-black text-white ${large?"h-14 w-14 text-sm":"h-9 w-9 text-[10px]"}`} style={{background:team.color}}>{team.short}</span>;}
