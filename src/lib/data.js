@@ -82,6 +82,8 @@ export const matches = [
         team: "a1",
         player: "Daniel Okoro",
         assist: "Musa Bello",
+        timestamp: new Date(Date.now() - 15000).toISOString(),
+        playerImage: "/players/daniel-okoro.jpg",
       },
       {
         id: "e2",
@@ -89,6 +91,8 @@ export const matches = [
         minute: 28,
         team: "a2",
         player: "Samuel James",
+        timestamp: new Date(Date.now() - 45000).toISOString(),
+        playerImage: "/players/samuel-james.jpg",
       },
     ],
   },
