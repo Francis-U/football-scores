@@ -25,7 +25,7 @@ function getEventIcon(type) {
 function getPlayerName(event) {
   if (typeof event.player === "string") return event.player;
 
-  return event.player?.name || event.playerName || event.team;
+  return event.player?.name || event.playerName || null;
 }
 
 function getPlayerImage(event) {
@@ -109,8 +109,9 @@ export default function SiteHeader({ matches }) {
       .sort((a, b) => b.eventTime - a.eventTime)[0] || null;
 
   // Hide the entire event panel when there is nothing recent to show.
-  const showEventPanel = Boolean(latestEvent) || !liveMatches.length;
-
+  //only use the below when you want to show 'no live natches'
+  // const showEventPanel = Boolean(latestEvent) || !liveMatches.length;
+  const showEventPanel = Boolean(latestEvent);
   return (
     <header className="border-b bg-white">
       <div className="mx-auto max-w-[1800px] px-4 py-4 sm:px-6 xl:px-8">
@@ -175,7 +176,7 @@ export default function SiteHeader({ matches }) {
                     className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] text-slate-400"
                     aria-label="Player photo unavailable"
                   >
-                    N/A
+                    {/* N/A */}
                   </span>
                 )}
 
