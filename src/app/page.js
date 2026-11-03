@@ -17,21 +17,22 @@ export default function Home() {
       initialMatches[0].id,
   );
   const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
+  // useEffect(() => {
+  //   const id = setInterval(() => setNow(Date.now()), 1000);
+  //   return () => clearInterval(id);
+  // }, []);
   const selected = ordered.find((m) => m.id === selectedId) || ordered[0];
   const clockFor = (m) =>
     m.status === "live" && m.startedAt
-      ? Math.min(
-          90,
-          Math.floor((now - new Date(m.startedAt).getTime()) / 60000),
-        )
+      ? // Math.min(
+        //     90,
+        //     Math.floor((now - new Date(m.startedAt).getTime()) / 60000),
+        //   )
+        Math.floor((now - new Date(m.startedAt).getTime()) / 60000)
       : m.minute || 0;
   return (
     <main className="min-h-screen bg-slate-100 text-slate-900">
-      <SiteHeader matches={matches} />
+      <SiteHeader matches={matches} now={now} />
       <div className="mx-auto grid max-w-[1800px] grid-cols-1 items-start gap-4 px-4 py-5 sm:px-6 lg:grid-cols-[minmax(270px,.9fr)_minmax(360px,1.4fr)_minmax(210px,.65fr)] xl:gap-5 xl:px-8">
         <FixturePanel
           tab={tab}

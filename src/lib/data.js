@@ -71,7 +71,7 @@ export const matches = [
     away: "a2",
     kickoff: day(0, 16),
     status: "live",
-    startedAt: new Date(Date.now() - 42 * 60000).toISOString(),
+    startedAt: new Date(Date.now() - 20 * 60000).toISOString(),
     homeScore: 2,
     awayScore: 1,
     events: [
@@ -85,6 +85,7 @@ export const matches = [
         timestamp: new Date(Date.now() - 15000).toISOString(),
         playerImage: "/players/daniel-okoro.jpg",
       },
+
       {
         id: "e2",
         type: "yellow-card",
@@ -94,6 +95,16 @@ export const matches = [
         timestamp: new Date(Date.now() - 45000).toISOString(),
         playerImage: "/players/samuel-james.jpg",
       },
+      // {
+      //   id: "e3",
+      //   type: "substitution",
+      //   minute: 30,
+      //   team: "a1",
+      //   playerIn: "Daniel Okoro",
+      //   playerOut: "Taiwo Eweje",
+      //   timestamp: new Date(Date.now() - 30000).toISOString(),
+      //   playerImage: "/players/daniel-okoro.jpg",
+      // },
     ],
   },
   {

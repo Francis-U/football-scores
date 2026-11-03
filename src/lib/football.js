@@ -10,6 +10,7 @@ export function sortMatches(list) {
         : new Date(a.kickoff) - new Date(b.kickoff)),
   );
 }
+
 export function getStandings(group, matches) {
   const rows = teams
     .filter((t) => t.group === group)
@@ -26,7 +27,9 @@ export function getStandings(group, matches) {
   matches
     .filter(
       (m) =>
-        m.group === group && m.status === "finished" && m.homeScore != null,
+        m.group === group &&
+        ["finished", "live"].includes(m.status) &&
+        m.homeScore != null,
     )
     .forEach((m) => {
       const h = rows.find((r) => r.team.id === m.home),

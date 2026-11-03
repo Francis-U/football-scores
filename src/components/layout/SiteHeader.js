@@ -40,50 +40,46 @@ function getPlayerImage(event) {
 }
 
 function getTeamName(event, match) {
-  const teamId =
-    typeof event.team === "string"
-      ? event.team
-      : event.team?.id || event.teamId;
+  return teams.find((team) => team.id === event.team)?.name || "";
 
-  const team = teams.find((t) => t.id === teamId);
-
-  if (team) return team.name;
-
-  if (typeof event.teamName === "string") {
-    return event.teamName;
-  }
-
-  const home = match.homeTeam || match.home;
-  const away = match.awayTeam || match.away;
-
-  if (typeof home === "object" && home?.name && home.id === teamId) {
-    return home.name;
-  }
-
-  if (typeof away === "object" && away?.name && away.id === teamId) {
-    return away.name;
-  }
-
-  return "";
+  /////the code below is useful hen upscaling
+  // const teamId =
+  //   typeof event.team === "string"
+  //     ? event.team
+  //     : event.team?.id || event.teamId;
+  // const team = teams.find((t) => t.id === teamId);
+  // if (team) return team.name;
+  // if (typeof event.teamName === "string") {
+  //   return event.teamName;
+  // }
+  // const home = match.homeTeam || match.home;
+  // const away = match.awayTeam || match.away;
+  // if (typeof home === "object " && home?.name && home.id === teamId) {
+  //   return home.name;
+  // }
+  // if (typeof away === "object" && away?.name && away.id === teamId) {
+  //   return away.name;
+  // }
+  // return "";
 }
 const EVENT_WINDOW = 60 * 1000;
 
-export default function SiteHeader({ matches }) {
+export default function SiteHeader({ matches, now }) {
   const [ad, setAd] = useState(0);
-  const [now, setNow] = useState(Date.now());
+  // const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
     const adInterval = setInterval(() => {
       setAd((v) => (v + 1) % adverts.length);
     }, 7000);
 
-    const clockInterval = setInterval(() => {
-      setNow(Date.now());
-    }, 1000);
+    // const clockInterval = setInterval(() => {
+    //   setNow(Date.now());
+    // }, 1000);
 
     return () => {
       clearInterval(adInterval);
-      clearInterval(clockInterval);
+      // clearInterval(clockInterval);
     };
   }, []);
 
